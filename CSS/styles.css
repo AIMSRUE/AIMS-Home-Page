@@ -1,3 +1,6 @@
-p {
-    color: red;
+button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
 }
