@@ -1,16 +1,30 @@
 // Übersetzungen
 const translations = {
     de: {
+        // Root-Level Übersetzungen
         welcome_title: "Willkommen auf unserer Homepage",
         welcome_message: "Die Webseite befindet sich noch in Entwicklung.",
+        // Header-Level Übersetzungen
+        header_home: "Startseite",
         header_contact: "Kontakt",
-        header_products: "Angebot"
+        header_products: "Angebot",
+        // AIMS_Business_Manager Übersetzungen
+        AIMS_Business_Manager_Title: "AIMS Business Manager",
+        // AIMS_Finance Übersetzungen
+        AIMS_Finance_Title: "AIMS Finance",
     },
     en: {
+        // Root-Level Übersetzungen
         welcome_title: "Welcome to our Homepage",
         welcome_message: "This website is still under construction.",
+        header_home: "Home",
+        // Header-Level Übersetztungen
         header_contact: "Contact",
-        header_products: "Products"
+        header_products: "Products",
+        // AIMS_Business_Manager Übersetzungen
+        AIMS_Business_Manager_Title: "AIMS Business Manager",
+        // AIMS_Finance Übersetzungen
+        AIMS_Finance_Title: "AIMS Finance",
     }
 };
 
@@ -25,13 +39,26 @@ function switchLanguage(lang) {
     const rootHtml = document.getElementById('html-root');
     if (rootHtml) rootHtml.setAttribute('lang', lang);
 
-    // Übersetzt jetzt bestehende Elemente + dynamisch nachgeladene Elemente
+    // Übersetzt bestehende Elemente + dynamisch nachgeladene Elemente
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
             element.textContent = translations[lang][key];
         }
     });
+}
+
+// Hilfsfunktion: Berechnet den relativen Pfad zur Root-Ebene
+function getRootPrefix() {
+    // Zählt, wie viele Unterordner im aktuellen Pfad existieren
+    const depth = window.location.pathname.split('/').filter(Boolean).length;
+    
+    // Wenn wir auf einem lokalen Server (z.B. Live Server) testen, 
+    // ignorieren wir oft den ersten Ordnernamen (Projektordner).
+    // Falls es im Unterordner nicht klappt, passe die "depth" an.
+    
+    if (depth <= 1) return './'; // Root-Ebene (z.B. index.html)
+    return '../'.repeat(depth - 1); // Für Unterordner (z.B. '../../')
 }
 
 // Header laden und DANACH Übersetzung starten
@@ -44,11 +71,12 @@ async function loadHeaderAndInit() {
     const defaultLang = savedLang || browserLang || 'de';
     currentLang = defaultLang;
 
-    // 2. Header asynchron holen
+    // 2. Header asynchron holen mit dynamischem Pfad prefix
     if (headerContainer) {
         try {
-            // Wichtig: Pfad ggf. anpassen (z.B. 'header.html' oder '/header.html')
-            const response = await fetch('header.html'); 
+            const prefix = getRootPrefix();
+            // Erzeugt automatisch z.B. '../../header.html'
+            const response = await fetch(`${prefix}header.html`); 
             const htmlContent = await response.text();
             
             // Header ins DOM einfügen
