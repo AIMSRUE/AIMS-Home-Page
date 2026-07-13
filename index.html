@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="de" id="html-root">
 <head>
-    <title>Homepage</title>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <script src="JS/language.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMS Rüfenacht Services</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../JS/language.js" defer></script>
 </head>
 <body>
     <div id="global-header"></div>
-    
-    <main>
-        <h1 data-i18n="welcome_title">Willkommen auf unserer Homepage</h1>
-        <p data-i18n="welcome_message">Die Webseite befindet sich noch in Entwicklung.</p>
+
+    <main class="container main-content">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow">Software & Administration für die Schweiz</span>
+                    <h1>Digitale Lösungen für <span class="accent">KMU und Privatpersonen</span></h1>
+                    <p class="lead">AIMS Rüfenacht Services entwickelt, betreibt und vertreibt Softwareprodukte und unterstützt Unternehmen sowie Privatpersonen in der Versicherungs- und Sozialversicherungsadministration.</p>
+                    <div class="hero-actions">
+                    <a href="#produkte" class="btn btn-primary">Produkte entdecken</a>
+                    <a href="#kontakt" class="btn btn-ghost">Anfrage senden</a>
+                </div>
+            </div>
+            <div class="network-wrap" aria-hidden="true">
+                <svg class="lines" viewBox="0 0 400 400">
+                <line x1="200" y1="200" x2="70" y2="60"></line>
+                <line x1="200" y1="200" x2="330" y2="70"></line>
+                <line x1="200" y1="200" x2="40" y2="290"></line>
+                <line x1="200" y1="200" x2="300" y2="330"></line>
+                <line x1="200" y1="200" x2="30" y2="190"></line>
+                </svg>
+
+            </div>
+        </section>
     </main>
+
+    <div id="global-footer"></div>
+
 </body>
 </html>
-

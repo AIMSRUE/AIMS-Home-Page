@@ -1,0 +1,21 @@
+/* Index */
+  .hero{
+    padding:180px 0 110px;
+    background:
+      radial-gradient(900px 480px at 88% -8%, rgba(160,102,203,0.12), transparent 60%),
+      radial-gradient(800px 480px at 6% 4%, rgba(134,199,237,0.28), transparent 60%),
+      var(--paper);
+    position:relative; 
+    overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;}
+  .hero h1{font-size:50px; margin-bottom:22px;}
+  .hero h1 .accent{color:var(--violet);}
+  .hero p.lead{font-size:18px; color:var(--grey); max-width:520px; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:14px; margin-bottom:44px; flex-wrap:wrap;}
+  .hero-meta{display:flex; gap:34px; flex-wrap:wrap;}
+  .hero-meta div strong{display:block; font-size:22px; color:var(--blue-dark); font-weight:700;}
+  .hero-meta div span{font-size:13px; color:var(--grey-light);}
+
+
+  
