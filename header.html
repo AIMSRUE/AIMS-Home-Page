@@ -4,32 +4,34 @@
 <body>
     <header id="global-header">
   <nav class="container">
-    <a href="index.html" class="logo">
+    <a href="/index.html" class="logo">
       <span>AIMS Rüfenacht Services</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="products.html" data-i18n="header_products">Angebot</a></li>
-      <li><a href="prices.html" data-i18n="header_prices">Preise</a></li>
-      <li><a href="help.html" data-i18n="header_help">Hilfe</a></li>
-      <li><a href="about.html" data-i18n="header_about">Über uns</a></li>
+      <li><a href="/products.html" data-i18n="header_products">Angebot</a></li>
+      <li><a href="/prices.html" data-i18n="header_prices">Preise</a></li>
+      <li><a href="/help.html" data-i18n="header_help">Hilfe</a></li>
+      <li><a href="/about.html" data-i18n="header_about">Über uns</a></li>
     </ul>
     <div class="nav-actions">
       <div class="lang-switcher">
-        <button class="btn btn-ghost" aria-haspopup="true" aria-expanded="false" data-i18n="header_current_language">DE</button>
+        <button class="btn btn-ghost" data-i18n="header_current_language">DE</button>
         <ul class="lang-dropdown">
           <li><button onclick="switchLanguage('de')">Deutsch</button></li>
           <li><button onclick="switchLanguage('en')">Englisch</button></li>
         </ul>
       </div>
       <div class="login-container">
-        <button class="btn btn-ghost" aria-haspopup="true" aria-expanded="false">👤</button>
+        <button class="btn btn-ghost">
+          <img src="/src/person.svg">
+        </button>
         <ul class="login-dropdown">
           <li class="dropdown-header" data-i18n="header_platform">Plattform</li>
           <li><a href="https://aims-services.ch" target="_blank">AIMS Business</a></li>
         </ul>
       </div>
       <div class="contact-container">
-        <a class="btn btn-primary" href="../../../contact.html" header_contact">Kontakt</a>
+        <a class="btn btn-primary" href="/contact.html" header_contact>Kontakt</a>
       </div>
     </div>
   </nav>
