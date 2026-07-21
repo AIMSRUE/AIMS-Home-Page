@@ -3,38 +3,42 @@
 </head>
 <body>
     <header id="global-header">
-  <nav class="container">
-    <a href="/index.html" class="logo">
-      <span>AIMS Rüfenacht Services</span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/products.html" data-i18n="header_products">Angebot</a></li>
-      <li><a href="/prices.html" data-i18n="header_prices">Preise</a></li>
-      <li><a href="/help.html" data-i18n="header_help">Hilfe</a></li>
-      <li><a href="/about.html" data-i18n="header_about">Über uns</a></li>
-    </ul>
-    <div class="nav-actions">
-      <div class="lang-switcher">
-        <button class="btn btn-ghost" data-i18n="header_current_language">DE</button>
-        <ul class="lang-dropdown">
-          <li><button onclick="switchLanguage('de')">Deutsch</button></li>
-          <li><button onclick="switchLanguage('en')">Englisch</button></li>
-        </ul>
-      </div>
-      <div class="login-container">
-        <button class="btn btn-ghost">
-          <img src="/src/person.svg">
-        </button>
-        <ul class="login-dropdown">
-          <li class="dropdown-header" data-i18n="header_platform">Plattform</li>
-          <li><a href="https://aims-services.ch" target="_blank">AIMS Business</a></li>
-        </ul>
-      </div>
-      <div class="contact-container">
-        <a class="btn btn-primary" href="/contact.html" header_contact>Kontakt</a>
-      </div>
-    </div>
-  </nav>
-</header>
-
+        <nav class="container" aria-label="Hauptnavigation">
+            <a href="/index.html" class="logo">
+                <span>AIMS Rüfenacht Services</span>
+            </a>
+            <input type="checkbox" id="navToggle" class="nav-toggle-checkbox">
+            <label for="navToggle" class="nav-toggle">...</label>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/products.html" data-i18n="header_products">Angebot</a></li>
+                <li><a href="/prices.html" data-i18n="header_prices">Preise</a></li>
+                <li><a href="/help.html" data-i18n="header_help">Hilfe</a></li>
+                <li><a href="/about.html" data-i18n="header_about">Über uns</a></li>
+            </ul>
+            <ul class="nav-actions" id="navActions">
+                <li>
+                    <div class="lang-container">
+                        <button class="btn btn-ghost" aria-haspopup="true" aria-expanded="false" data-i18n="header_current_language">DE</button>
+                        <ul class="lang-dropdown" aria-label="Sprachauswahl">
+                            <li><button type="button" onclick="switchLanguage('de')">Deutsch</button></li>
+                            <li><button type="button" onclick="switchLanguage('en')">English</button></li>
+                            <li><button type="button" onclick="switchLanguage('fr')">Français</button></li>
+                            <li><button type="button" onclick="switchLanguage('it')">Italiano</button></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="login-container">
+                    <button class="btn btn-ghost nav-icon-btn" aria-label="Login" aria-haspopup="true" aria-expanded="false">
+                        <img src="/src/person.svg" alt="" aria-hidden="true">
+                    </button>
+                    <ul class="login-dropdown" aria-label="Plattform-Login">
+                        <li class="dropdown-header" data-i18n="header_platform">Plattform</li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="/contact.html" data-i18n="header_contact">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </body>
