@@ -13,7 +13,7 @@ header {
 
 header.scrolled {
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 6px 20px -18px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px -18px rgba(0, 0, 0, 0.4);
 }
 
 nav.container {
@@ -32,7 +32,9 @@ nav.container {
   font-size: 21px;
   color: var(--blue-dark);
   flex-shrink: 0;
+  text-decoration: none;
 }
+
 .logo .sub {
   display: block;
   font-weight: 400;
@@ -45,14 +47,20 @@ nav.container {
   display: flex;
   align-items: center;
   gap: 34px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 .nav-links a {
   font-size: 14.5px;
   font-weight: 700;
   color: var(--ink);
   position: relative;
   padding: 4px 0;
+  text-decoration: none;
 }
+
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -63,12 +71,15 @@ nav.container {
   background: var(--blue-dark);
   transition: width .2s ease;
 }
+
 .nav-links a:hover::after {
   width: 100%;
 }
+
 .nav-links a.active {
   color: var(--blue-dark);
 }
+
 .nav-links a.active::after {
   width: 100%;
 }
@@ -78,6 +89,9 @@ nav.container {
   align-items: center;
   gap: 14px;
   height: var(--header-height);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-actions li {
@@ -90,19 +104,24 @@ nav.container {
   font-size: 13.5px;
   min-height: 38px;
   line-height: 1.4;
+  text-decoration: none;
 }
 
 .nav-icon-btn {
   padding: 8px !important;
   width: 38px;
   height: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
+
 .nav-icon-btn img {
   width: 18px;
   height: 18px;
+  display: block;
 }
 
-/* ---------- Language dropdown ---------- */
 .lang-container {
   position: relative;
   display: inline-block;
@@ -124,6 +143,7 @@ nav.container {
   transform: translateY(-8px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   z-index: 100;
+  list-style: none;
 }
 
 .lang-dropdown li button {
@@ -146,14 +166,12 @@ nav.container {
   color: var(--blue-dark);
 }
 
-/* KORREKTUR: Sichtbarkeit steuern via JS-Klasse .show auf dem Dropdown oder via Hover auf Desktop */
 .lang-dropdown.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-/* ---------- Login dropdown ---------- */
 .login-container {
   position: relative;
   display: inline-block;
@@ -175,6 +193,7 @@ nav.container {
   transform: translateY(-8px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   z-index: 100;
+  list-style: none;
 }
 
 .login-dropdown .dropdown-header {
@@ -188,39 +207,32 @@ nav.container {
   margin-bottom: 4px;
 }
 
+.login-dropdown li {
+  width: 100%;
+}
+
 .login-dropdown li a {
   display: block;
+  width: 100%;
   padding: 8px 16px;
   color: var(--grey);
   font-size: 13.5px;
   font-weight: 600;
+  text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .login-dropdown li a:hover {
   background-color: var(--paper);
   color: var(--blue-dark);
-  width: 100%;
 }
 
-/* KORREKTUR: Sichtbarkeit steuern via JS-Klasse .show auf dem Dropdown oder via Hover auf Desktop */
 .login-dropdown.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-/* ---------- Desktop Hover Effekte (Nur aktiv, wenn kein Touchgerät genutzt wird) ---------- */
-@media (hover: hover) {
-  .lang-container:hover .lang-dropdown,
-  .login-container:hover .login-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
-
-/* ---------- Restliche Elemente ---------- */
 .contact-container {
   position: relative;
   display: inline-block;
@@ -233,7 +245,8 @@ nav.container {
   gap: 5px;
   width: 28px;
   height: 24px;
-  cursor: pointer; /* KORREKTUR: Cursor hinzugefügt */
+  cursor: pointer;
+  z-index: 105;
 }
 
 .burger span {
@@ -241,7 +254,7 @@ nav.container {
   width: 100%;
   border-radius: 2px;
   background: var(--blue-dark);
-  transition: .25s;
+  transition: transform .25s ease, opacity .25s ease;
 }
 
 .burger.toggle-morph span:nth-child(1) {
