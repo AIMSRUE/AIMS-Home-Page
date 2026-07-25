@@ -224,64 +224,60 @@ function switchLanguage(lang) {
 
 function getRootPrefix() {
     const depth = window.location.pathname.split('/').filter(Boolean).length;
-    if (depth <= 1) return './'; 
-    return '../'.repeat(depth - 1); 
+    return depth <= 1 ? './' : '../'.repeat(depth - 1);
+}
+
+function getCurrentLang() {
+    const savedLang = localStorage.getItem('preferredLang');
+    const browserLang = navigator.language.startsWith('en') ? 'en' : 'de';
+    return savedLang || browserLang;
+}
+
+function bindBurgerMenu() {
+    const burgerToggle = document.getElementById('burgerToggle');
+    const navMenu = document.getElementById('navLinks');
+ 
+    if (!burgerToggle || !navMenu) {
+        console.warn("Burger elements not found.");
+        return;
+    }
+ 
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+        burgerToggle.classList.toggle('toggle-morph'); // burger icon animation
+    }
+ 
+    // Guard against double-binding (e.g. if this runs once for a hardcoded
+    // header and again after loadHeaderAndInit fetches a new one)
+    burgerToggle.removeEventListener('click', toggleMenu);
+    burgerToggle.addEventListener('click', toggleMenu);
+}
+
+async function loadPartial(name, container) {
+    if (!container) return;
+    try {
+        const prefix = getRootPrefix();
+        const response = await fetch(`${prefix}${name}.html`);
+        container.innerHTML = await response.text();
+    } catch (error) {
+        console.error(`Error loading ${name}.html:`, error);
+    }
 }
 
 async function loadHeaderAndInit() {
-    const headerContainer = document.getElementById('global-header');
-    const footerContainer = document.getElementById('global-footer');
-    
-    const savedLang = localStorage.getItem('preferredLang');
-    const browserLang = navigator.language.startsWith('en') ? 'en' : 'de';
-    currentLang = savedLang || browserLang || 'de';
 
-    if (headerContainer) {
-        try {
-            const prefix = getRootPrefix();
-            const response = await fetch(`${prefix}header.html`);
-            headerContainer.innerHTML = await response.text();
-        } catch (error) {
-            console.error("Error loading the header template:", error);
-        }
-    }
-    
-    if (footerContainer) {
-        try {
-            const prefix = getRootPrefix();
-            const response = await fetch(`${prefix}footer.html`);
-            footerContainer.innerHTML = await response.text();
-        } catch (error) {
-            console.error("Error loading the footer template:", error);
-        }
-    }
-    
-    switchLanguage(currentLang);
+    const header = document.getElementById("global-header");
+    const footer = document.getElementById("global-footer");
+
+    await loadPartial("header", header);
+    await loadPartial("footer", footer);
+
+    bindBurgerMenu();
+
+    switchLanguage(getCurrentLang());
+
 }
 
-// Initialisierung beim Laden der Seite
 window.addEventListener('DOMContentLoaded', loadHeaderAndInit);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const burgerToggle = document.getElementById('burgerToggle');
-  const navLinks = document.getElementById('navLinks');
-  const header = document.getElementById('global-header');
-
-  // Schaltet das mobile Menü ein/aus basierend auf deinem CSS (.nav-links.open)
-  if (burgerToggle && navLinks) {
-    burgerToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      burgerToggle.classList.toggle('open');
-    });
-  }
-
-  // Aktiviert deinen CSS-Schattenwurf (.scrolled) beim Runterscrollen
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-});
 

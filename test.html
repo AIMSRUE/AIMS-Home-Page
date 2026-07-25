@@ -1,0 +1,183 @@
+<html>
+    <head>
+       <style>
+    /* Reset & Grundlegende Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #1e293b;
+      color: #ffffff;
+      padding: 1rem 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    /* Navigation Links */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-primary { background-color: #3b82f6; color: white; }
+    .btn-secondary { background-color: #64748b; color: white; }
+    .btn-accent { background-color: #10b981; color: white; }
+
+    /* Burger Menu Button (Initial versteckt) */
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .burger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    /* Versteckt den 3. Button im Menü auf Desktop */
+    .desktop-hidden {
+      display: none;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+
+      /* Versteckt den 3. Action-Button in der Leiste auf Mobile */
+      .mobile-hidden {
+        display: none;
+      }
+
+      /* Macht den 3. Button im Burger-Menü auf Mobile sichtbar */
+      .desktop-hidden {
+        display: block;
+        margin-top: 1rem;
+        width: 100%;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #1e293b;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        display: none; /* Standardmäßig auf Mobile eingeklappt */
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+    }
+  </style>
+    </head>
+    <body>
+        <header>
+        <nav class="container" aria-label="Main navigation">
+
+                <a href="/index.html" class="logo">
+                    <span>AIMS Rüfenacht Services</span>
+                </a>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/products.html" data-i18n="header_products">Angebot</a></li>
+                    <li><a href="/prices.html" data-i18n="header_prices">Preise</a></li>
+                    <li><a href="/help.html" data-i18n="header_help">Hilfe</a></li>
+                    <li><a href="/about.html" data-i18n="header_about">Über uns</a></li>
+                    <li class="desktop-hidden">
+                        <a class="btn btn-primary" href="/contact.html" data-i18n="header_contact">Kontakt</a>
+                    </li>
+                </ul>
+
+                <ul class="nav-actions">
+                    <li>
+                        <div class="lang-container">
+                            <button class="btn btn-ghost" data-i18n="header_current_language">DE</button>
+                            <ul class="lang-dropdown">
+                                <li><button onclick="switchLanguage('de')">Deutsch</button></li>
+                                <li><button onclick="switchLanguage('en')">English</button></li>
+                                <li><button onclick="switchLanguage('fr')">Français</button></li>
+                                <li><button onclick="switchLanguage('it')">Italiano</button></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="login-container">
+                        <button class="btn btn-ghost nav-icon-btn">
+                            <img src="/src/person.svg" alt="">
+                        </button>
+
+                        <ul class="login-dropdown">
+                            <li class="dropdown-header" data-i18n="header_platform"> Plattform</li>
+                            <li><a class="dropdown" data-i18n="">AIMS Finance</a> </li>
+                            <li><a class="dropdown" data-i18n="">AIMS Business</a> </li>
+                        </ul>
+                    </li>
+                    <li><a class="btn btn-primary mobile-hidden" data-i18n="header_contact">Kontakt</a></li>
+                    <li>
+                        <div class="burger" id="burgerToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>
