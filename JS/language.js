@@ -263,25 +263,22 @@ function bindDropdowns() {
         return;
     }
 
-    function toggleDropdown(dropdownToToggle, dropdownToClose) {
-        dropdownToToggle.classList.toggle('show');
-        dropdownToClose.classList.remove('show');
-    }
-
-    // Klick auf Sprach-Button
+    // Toggle für Sprach-Dropdown
     langBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleDropdown(langDropdown, loginDropdown);
+        e.preventDefault();
+        langDropdown.classList.toggle('show');
+        loginDropdown.classList.remove('show');
     });
 
-    // Klick auf Login-Button
+    // Toggle für Login-Dropdown
     loginBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleDropdown(loginDropdown, langDropdown);
+        e.preventDefault();
+        loginDropdown.classList.toggle('show');
+        langDropdown.classList.remove('show');
     });
 
-    // Klick irgendwo ausserhalb schliesst geöffnete Dropdowns
-    document.addEventListener('click', (e) => {
+    // Schliessen bei Klick/Touch ausserhalb (pointerdown deckt Maus und Touch ab)
+    document.addEventListener('pointerdown', (e) => {
         if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
             langDropdown.classList.remove('show');
         }
@@ -290,6 +287,7 @@ function bindDropdowns() {
         }
     });
 }
+
 
 async function loadPartial(name, container) {
     if (!container) return;
