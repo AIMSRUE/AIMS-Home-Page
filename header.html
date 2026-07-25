@@ -23,8 +23,8 @@
             <ul class="nav-actions">
                 <li>
                     <div class="lang-container">
-                        <button class="btn btn-ghost" data-i18n="header_current_language">DE</button>
-                        <ul class="lang-dropdown">
+                        <button class="btn btn-ghost" data-i18n="header_current_language" id="langBtn">DE</button>
+                        <ul class="lang-dropdown" id="langDropDown">
                             <li><button onclick="switchLanguage('de')">Deutsch</button></li>
                             <li><button onclick="switchLanguage('en')">English</button></li>
                             <li><button onclick="switchLanguage('fr')">Français</button></li>
@@ -34,13 +34,12 @@
                 </li>
 
                 <li class="login-container">
-                    <button class="btn btn-ghost nav-icon-btn">
+                    <button class="btn btn-ghost nav-icon-btn" id="loginBtn">
                         <img src="/src/person.svg" alt="">
                     </button>
 
-                    <ul class="login-dropdown">
+                    <ul class="login-dropdown" id="loginDropdown">
                         <li class="dropdown-header" data-i18n="header_platform"> Plattform</li>
-                        <li><a class="dropdown" data-i18n="">AIMS Finance</a> </li>
                         <li><a class="dropdown" data-i18n="">AIMS Business</a> </li>
                     </ul>
                 </li>
@@ -55,6 +54,4 @@
             </ul>
         </nav>
     </header>
-    <script>
-  </script>
 </body>

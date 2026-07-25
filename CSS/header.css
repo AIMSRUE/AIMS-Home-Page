@@ -146,13 +146,14 @@ nav.container {
   color: var(--blue-dark);
 }
 
-.lang-container:hover .lang-dropdown,
-.lang-container.open .lang-dropdown {
+/* KORREKTUR: Sichtbarkeit steuern via JS-Klasse .show auf dem Dropdown oder via Hover auf Desktop */
+.lang-dropdown.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
+/* ---------- Login dropdown ---------- */
 .login-container {
   position: relative;
   display: inline-block;
@@ -199,51 +200,62 @@ nav.container {
 .login-dropdown li a:hover {
   background-color: var(--paper);
   color: var(--blue-dark);
+  width: 100%;
 }
 
-.login-container:hover .login-dropdown,
-.login-container.open .login-dropdown {
+/* KORREKTUR: Sichtbarkeit steuern via JS-Klasse .show auf dem Dropdown oder via Hover auf Desktop */
+.login-dropdown.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
+/* ---------- Desktop Hover Effekte (Nur aktiv, wenn kein Touchgerät genutzt wird) ---------- */
+@media (hover: hover) {
+  .lang-container:hover .lang-dropdown,
+  .login-container:hover .login-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Restliche Elemente ---------- */
 .contact-container {
   position: relative;
   display: inline-block;
 }
 
-.burger{
-    display:none;
-    flex-direction:column;
-    justify-content:center;
-    gap:5px;
-    width:28px;
-    height:24px;
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 24px;
+  cursor: pointer; /* KORREKTUR: Cursor hinzugefügt */
 }
 
-.burger span{
-    height:3px;
-    width:100%;
-    border-radius:2px;
-    background:var(--blue-dark);
-    transition:.25s;
+.burger span {
+  height: 3px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--blue-dark);
+  transition: .25s;
 }
 
-.burger.toggle-morph span:nth-child(1){
-    transform:translateY(8px) rotate(45deg);
+.burger.toggle-morph span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
 
-.burger.toggle-morph span:nth-child(2){
-    opacity:0;
+.burger.toggle-morph span:nth-child(2) {
+  opacity: 0;
 }
 
-.burger.toggle-morph span:nth-child(3){
-    transform:translateY(-8px) rotate(-45deg);
+.burger.toggle-morph span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .desktop-hidden {
   display: none;
 }
-
-

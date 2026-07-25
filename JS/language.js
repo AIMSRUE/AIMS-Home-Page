@@ -203,7 +203,6 @@ const translations = {
 };
 
 
-
 let currentLang = 'de';
 
 function switchLanguage(lang) {
@@ -247,10 +246,49 @@ function bindBurgerMenu() {
         burgerToggle.classList.toggle('toggle-morph'); // burger icon animation
     }
  
-    // Guard against double-binding (e.g. if this runs once for a hardcoded
-    // header and again after loadHeaderAndInit fetches a new one)
+    // Guard against double-binding
     burgerToggle.removeEventListener('click', toggleMenu);
     burgerToggle.addEventListener('click', toggleMenu);
+}
+
+// NEU: Logik für Sprach- und Login-Dropdowns (schliessen bei Klick ausserhalb oder erneutem Klick)
+function bindDropdowns() {
+    const langBtn = document.getElementById('langBtn');
+    const langDropdown = document.getElementById('langDropdown');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginDropdown = document.getElementById('loginDropdown');
+
+    if (!langBtn || !langDropdown || !loginBtn || !loginDropdown) {
+        console.warn("Dropdown elements not found in header.");
+        return;
+    }
+
+    function toggleDropdown(dropdownToToggle, dropdownToClose) {
+        dropdownToToggle.classList.toggle('show');
+        dropdownToClose.classList.remove('show');
+    }
+
+    // Klick auf Sprach-Button
+    langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown(langDropdown, loginDropdown);
+    });
+
+    // Klick auf Login-Button
+    loginBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown(loginDropdown, langDropdown);
+    });
+
+    // Klick irgendwo ausserhalb schliesst geöffnete Dropdowns
+    document.addEventListener('click', (e) => {
+        if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+            langDropdown.classList.remove('show');
+        }
+        if (!loginBtn.contains(e.target) && !loginDropdown.contains(e.target)) {
+            loginDropdown.classList.remove('show');
+        }
+    });
 }
 
 async function loadPartial(name, container) {
@@ -265,19 +303,17 @@ async function loadPartial(name, container) {
 }
 
 async function loadHeaderAndInit() {
-
     const header = document.getElementById("global-header");
     const footer = document.getElementById("global-footer");
 
     await loadPartial("header", header);
     await loadPartial("footer", footer);
 
+    // Aktiviert Burger-Menü und Dropdowns, nachdem das HTML geladen wurde
     bindBurgerMenu();
+    bindDropdowns(); 
 
     switchLanguage(getCurrentLang());
-
 }
 
 window.addEventListener('DOMContentLoaded', loadHeaderAndInit);
-
-
