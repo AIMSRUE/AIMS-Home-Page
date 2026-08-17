@@ -1,0 +1,51 @@
+<head>
+    <link rel="stylesheet" href="/CSS/header.css">
+    <link rel="stylesheet" href="/CSS/main.css">
+</head>
+<body>
+<header>
+    <nav class="container" aria-label="Hauptnavigation">
+        <a href="/de/index.html" class="logo">
+            <span>AIMS Rüfenacht Services</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/de/produkte.html">Angebot</a></li>
+            <li><a href="/de/preise.html">Preise</a></li>
+            <li><a href="/de/hilfe.html">Hilfe</a></li>
+            <li><a href="/de/über-uns.html">Über uns</a></li>
+            <li class="desktop-hidden">
+                <a class="btn btn-primary" href="/de/kontakt.html">Kontakt</a>
+            </li>
+        </ul>
+        <ul class="nav-actions">
+            <li>
+                <div class="lang-container">
+                    <button class="btn btn-ghost" id="langBtn" aria-label="Sprache ändern" aria-haspopup="true" aria-expanded="false">DE</button>
+                    <ul class="lang-dropdown" id="langDropdown">
+                        <li><button onclick="switchLanguage('de')" lang="de">Deutsch</button></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="login-container">
+                <button class="btn btn-ghost nav-icon-btn" id="loginBtn" aria-label="Kunden-Login" aria-haspopup="true" aria-expanded="false">
+                    <img src="/src/person.svg" aria-hidden="true" alt="">
+                </button>
+
+                <ul class="login-dropdown" id="loginDropdown">
+                    <li class="dropdown-header">Plattform</li>
+                    <li><a href="/de/business.html" class="dropdown">AIMS Business</a></li> 
+                </ul>
+            </li>
+            <li><a class="btn btn-primary mobile-hidden" href="/de/kontakt.html">Kontakt</a></li>
+            <li>
+                <button class="burger nav-toggle" id="burgerToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="navLinks">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+</body>
