@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIMS Rüfenacht Services</title>
+    <style>
+        body {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', () => {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+        });
+    </script>
     <link rel="stylesheet" href="/CSS/index.css">
     <script src="/JS/main.js" defer></script>
+    
 </head>
 <body>
     <div id="global-header"></div>
