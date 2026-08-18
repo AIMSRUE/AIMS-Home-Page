@@ -245,8 +245,17 @@ nav.container {
   gap: 5px;
   width: 28px;
   height: 24px;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   z-index: 105;
+
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .burger span {
@@ -254,6 +263,8 @@ nav.container {
   width: 100%;
   border-radius: 2px;
   background: var(--blue-dark);
+  box-shadow: none;       
+  filter: none;
   transition: transform .25s ease, opacity .25s ease;
 }
 
